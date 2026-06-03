@@ -4,6 +4,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/sim.dir/src/Agent.cpp.o.d"
   "CMakeFiles/sim.dir/src/Environment.cpp.o"
   "CMakeFiles/sim.dir/src/Environment.cpp.o.d"
+  "CMakeFiles/sim.dir/src/GeneticAlgorithm.cpp.o"
+  "CMakeFiles/sim.dir/src/GeneticAlgorithm.cpp.o.d"
   "CMakeFiles/sim.dir/src/Renderer.cpp.o"
   "CMakeFiles/sim.dir/src/Renderer.cpp.o.d"
   "CMakeFiles/sim.dir/src/Simulation.cpp.o"

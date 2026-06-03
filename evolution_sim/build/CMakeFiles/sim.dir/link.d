@@ -4,6 +4,7 @@ sim: \
   /usr/lib/gcc/x86_64-linux-gnu/14/crtbeginS.o \
   CMakeFiles/sim.dir/src/Agent.cpp.o \
   CMakeFiles/sim.dir/src/Environment.cpp.o \
+  CMakeFiles/sim.dir/src/GeneticAlgorithm.cpp.o \
   CMakeFiles/sim.dir/src/Renderer.cpp.o \
   CMakeFiles/sim.dir/src/Simulation.cpp.o \
   CMakeFiles/sim.dir/src/main.cpp.o \
@@ -66,6 +67,8 @@ sim: \
 CMakeFiles/sim.dir/src/Agent.cpp.o:
 
 CMakeFiles/sim.dir/src/Environment.cpp.o:
+
+CMakeFiles/sim.dir/src/GeneticAlgorithm.cpp.o:
 
 CMakeFiles/sim.dir/src/Renderer.cpp.o:
 

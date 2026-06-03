@@ -10,6 +10,7 @@ public:
     int getHeight() const;
     bool isValidPosition(int x, int y) const;
     bool hasFood(int x,int y) const;
+    bool hasAgent(int x, int y) const;
     void consumeFood(int x,int y);
     void update();
 private:

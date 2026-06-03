@@ -8,9 +8,9 @@ Environment::Environment(int height, int width)
     
     foodRegenRate = (1 + rand() % 100) / 100.0;
 
-    foodGrid.assign(height, std::vector<int>(width, 0));
+    foodGrid.assign(width, std::vector<int>(height, 0));
     int i = 0;
-    while (i < height * width * 0.2)
+    while (i < height * width * 0.20)
     {
 
         int x = rand() % width;
@@ -44,6 +44,7 @@ bool Environment::hasFood(int x, int y) const
     }
     return false;
 }
+
 void Environment::consumeFood(int x, int y)
 {
     foodGrid[x][y] = 0;
@@ -53,9 +54,9 @@ void Environment::update()
 {
     currentTick++;
 
-    if (currentTick % 100 == 0)
+    if (currentTick % 10 == 0)
     {
-        int foodToAdd=(width*height/50);
+        int foodToAdd=(width*height/30);
         int attempts = 0;
 
         while (foodToAdd >0 && attempts<100)

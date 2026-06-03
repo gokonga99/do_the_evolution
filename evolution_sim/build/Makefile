@@ -177,6 +177,30 @@ src/Environment.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim.dir/build.make CMakeFiles/sim.dir/src/Environment.cpp.s
 .PHONY : src/Environment.cpp.s
 
+src/GeneticAlgorithm.o: src/GeneticAlgorithm.cpp.o
+.PHONY : src/GeneticAlgorithm.o
+
+# target to build an object file
+src/GeneticAlgorithm.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim.dir/build.make CMakeFiles/sim.dir/src/GeneticAlgorithm.cpp.o
+.PHONY : src/GeneticAlgorithm.cpp.o
+
+src/GeneticAlgorithm.i: src/GeneticAlgorithm.cpp.i
+.PHONY : src/GeneticAlgorithm.i
+
+# target to preprocess a source file
+src/GeneticAlgorithm.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim.dir/build.make CMakeFiles/sim.dir/src/GeneticAlgorithm.cpp.i
+.PHONY : src/GeneticAlgorithm.cpp.i
+
+src/GeneticAlgorithm.s: src/GeneticAlgorithm.cpp.s
+.PHONY : src/GeneticAlgorithm.s
+
+# target to generate assembly for a file
+src/GeneticAlgorithm.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim.dir/build.make CMakeFiles/sim.dir/src/GeneticAlgorithm.cpp.s
+.PHONY : src/GeneticAlgorithm.cpp.s
+
 src/Renderer.o: src/Renderer.cpp.o
 .PHONY : src/Renderer.o
 
@@ -264,6 +288,9 @@ help:
 	@echo "... src/Environment.o"
 	@echo "... src/Environment.i"
 	@echo "... src/Environment.s"
+	@echo "... src/GeneticAlgorithm.o"
+	@echo "... src/GeneticAlgorithm.i"
+	@echo "... src/GeneticAlgorithm.s"
 	@echo "... src/Renderer.o"
 	@echo "... src/Renderer.i"
 	@echo "... src/Renderer.s"

@@ -14,7 +14,7 @@ int main() {
     int height=30;
     int width=30;
     float cellsize=25.f;
-    int numberOfAgents=15;
+    int numberOfAgents=20;
 
     Simulation sim(numberOfAgents,height,width);
     Renderer renderer(width, height, cellsize);
@@ -23,6 +23,6 @@ int main() {
         renderer.handleEvents();
         sim.tick();
         renderer.draw(sim);
-        std::this_thread::sleep_for(std::chrono::milliseconds(500));
+        std::this_thread::sleep_for(std::chrono::milliseconds(10));
     }
 }

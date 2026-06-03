@@ -100,10 +100,24 @@ CMakeFiles/sim.dir/src/Environment.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/sim.dir/src/Environment.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gokonga/C++_projects/bachalor_thesis/evolution_sim/src/Environment.cpp -o CMakeFiles/sim.dir/src/Environment.cpp.s
 
+CMakeFiles/sim.dir/src/GeneticAlgorithm.cpp.o: CMakeFiles/sim.dir/flags.make
+CMakeFiles/sim.dir/src/GeneticAlgorithm.cpp.o: /home/gokonga/C++_projects/bachalor_thesis/evolution_sim/src/GeneticAlgorithm.cpp
+CMakeFiles/sim.dir/src/GeneticAlgorithm.cpp.o: CMakeFiles/sim.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/gokonga/C++_projects/bachalor_thesis/evolution_sim/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/sim.dir/src/GeneticAlgorithm.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/sim.dir/src/GeneticAlgorithm.cpp.o -MF CMakeFiles/sim.dir/src/GeneticAlgorithm.cpp.o.d -o CMakeFiles/sim.dir/src/GeneticAlgorithm.cpp.o -c /home/gokonga/C++_projects/bachalor_thesis/evolution_sim/src/GeneticAlgorithm.cpp
+
+CMakeFiles/sim.dir/src/GeneticAlgorithm.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/sim.dir/src/GeneticAlgorithm.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/gokonga/C++_projects/bachalor_thesis/evolution_sim/src/GeneticAlgorithm.cpp > CMakeFiles/sim.dir/src/GeneticAlgorithm.cpp.i
+
+CMakeFiles/sim.dir/src/GeneticAlgorithm.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/sim.dir/src/GeneticAlgorithm.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/gokonga/C++_projects/bachalor_thesis/evolution_sim/src/GeneticAlgorithm.cpp -o CMakeFiles/sim.dir/src/GeneticAlgorithm.cpp.s
+
 CMakeFiles/sim.dir/src/Renderer.cpp.o: CMakeFiles/sim.dir/flags.make
 CMakeFiles/sim.dir/src/Renderer.cpp.o: /home/gokonga/C++_projects/bachalor_thesis/evolution_sim/src/Renderer.cpp
 CMakeFiles/sim.dir/src/Renderer.cpp.o: CMakeFiles/sim.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/gokonga/C++_projects/bachalor_thesis/evolution_sim/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/sim.dir/src/Renderer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/gokonga/C++_projects/bachalor_thesis/evolution_sim/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/sim.dir/src/Renderer.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/sim.dir/src/Renderer.cpp.o -MF CMakeFiles/sim.dir/src/Renderer.cpp.o.d -o CMakeFiles/sim.dir/src/Renderer.cpp.o -c /home/gokonga/C++_projects/bachalor_thesis/evolution_sim/src/Renderer.cpp
 
 CMakeFiles/sim.dir/src/Renderer.cpp.i: cmake_force
@@ -117,7 +131,7 @@ CMakeFiles/sim.dir/src/Renderer.cpp.s: cmake_force
 CMakeFiles/sim.dir/src/Simulation.cpp.o: CMakeFiles/sim.dir/flags.make
 CMakeFiles/sim.dir/src/Simulation.cpp.o: /home/gokonga/C++_projects/bachalor_thesis/evolution_sim/src/Simulation.cpp
 CMakeFiles/sim.dir/src/Simulation.cpp.o: CMakeFiles/sim.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/gokonga/C++_projects/bachalor_thesis/evolution_sim/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/sim.dir/src/Simulation.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/gokonga/C++_projects/bachalor_thesis/evolution_sim/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/sim.dir/src/Simulation.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/sim.dir/src/Simulation.cpp.o -MF CMakeFiles/sim.dir/src/Simulation.cpp.o.d -o CMakeFiles/sim.dir/src/Simulation.cpp.o -c /home/gokonga/C++_projects/bachalor_thesis/evolution_sim/src/Simulation.cpp
 
 CMakeFiles/sim.dir/src/Simulation.cpp.i: cmake_force
@@ -131,7 +145,7 @@ CMakeFiles/sim.dir/src/Simulation.cpp.s: cmake_force
 CMakeFiles/sim.dir/src/main.cpp.o: CMakeFiles/sim.dir/flags.make
 CMakeFiles/sim.dir/src/main.cpp.o: /home/gokonga/C++_projects/bachalor_thesis/evolution_sim/src/main.cpp
 CMakeFiles/sim.dir/src/main.cpp.o: CMakeFiles/sim.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/gokonga/C++_projects/bachalor_thesis/evolution_sim/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/sim.dir/src/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/gokonga/C++_projects/bachalor_thesis/evolution_sim/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/sim.dir/src/main.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/sim.dir/src/main.cpp.o -MF CMakeFiles/sim.dir/src/main.cpp.o.d -o CMakeFiles/sim.dir/src/main.cpp.o -c /home/gokonga/C++_projects/bachalor_thesis/evolution_sim/src/main.cpp
 
 CMakeFiles/sim.dir/src/main.cpp.i: cmake_force
@@ -146,6 +160,7 @@ CMakeFiles/sim.dir/src/main.cpp.s: cmake_force
 sim_OBJECTS = \
 "CMakeFiles/sim.dir/src/Agent.cpp.o" \
 "CMakeFiles/sim.dir/src/Environment.cpp.o" \
+"CMakeFiles/sim.dir/src/GeneticAlgorithm.cpp.o" \
 "CMakeFiles/sim.dir/src/Renderer.cpp.o" \
 "CMakeFiles/sim.dir/src/Simulation.cpp.o" \
 "CMakeFiles/sim.dir/src/main.cpp.o"
@@ -155,6 +170,7 @@ sim_EXTERNAL_OBJECTS =
 
 sim: CMakeFiles/sim.dir/src/Agent.cpp.o
 sim: CMakeFiles/sim.dir/src/Environment.cpp.o
+sim: CMakeFiles/sim.dir/src/GeneticAlgorithm.cpp.o
 sim: CMakeFiles/sim.dir/src/Renderer.cpp.o
 sim: CMakeFiles/sim.dir/src/Simulation.cpp.o
 sim: CMakeFiles/sim.dir/src/main.cpp.o
@@ -164,7 +180,7 @@ sim: /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.6.2
 sim: /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.6.2
 sim: /usr/lib/x86_64-linux-gnu/libsfml-system.so.2.6.2
 sim: CMakeFiles/sim.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/gokonga/C++_projects/bachalor_thesis/evolution_sim/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable sim"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/gokonga/C++_projects/bachalor_thesis/evolution_sim/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable sim"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/sim.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
