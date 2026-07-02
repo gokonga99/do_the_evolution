@@ -3,17 +3,25 @@
 #include <vector>
 #include "Simulation.hpp"
 
-class Renderer {
+class Renderer
+{
 public:
-    Renderer(int width, int height, int cellSize);
+    Renderer(int width, int height, int cellSize, Simulation &sim);
 
     bool isOpen();
     void handleEvents();
-    void draw(const Simulation& sim);
+    void draw();
+    int getSimSpeed();
+    bool isPaused();
+    sf::Font font;
+    sf::Text statsText;
 
 private:
     sf::RenderWindow window;
     int width;
     int height;
     float cellsize;
+    Simulation &sim;
+    int simSpeed=500;
+    bool paused = false;
 };

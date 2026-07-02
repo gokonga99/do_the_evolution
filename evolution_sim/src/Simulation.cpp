@@ -2,22 +2,89 @@
 #include <algorithm>
 #include <iostream>
 #include <climits>
+#include <fstream>
 
-Simulation::Simulation(int numAgents, int height, int width)
-    : currentTick(0), env(height, width), numAgents(numAgents)
+Simulation::Simulation(int numAgents, int height, int width, std::string &weightsFile)
+    : currentTick(0), env(height, width),
+      numAgents(numAgents), weightsFile(weightsFile)
 {
     agents.reserve(numAgents);
 
     for (int i = 0; i < numAgents; i++)
     {
-        agents.emplace_back(height, width);
+        agents.emplace_back(height, width, weightsFile);
     }
 }
 
+int Simulation::getCurrentTick() const
+{
+    return currentTick;
+}
+void Simulation ::saveToFile(const std::string &fileName)
+{
+    weightsFile = fileName;
+    std::ofstream file(fileName);
+    std::vector<Agent *> sorted;
+    for (auto &agent : agents)
+        sorted.push_back(&agent);
+    std::sort(sorted.begin(), sorted.end(),
+              [](Agent *a, Agent *b)
+              { return a->getEnergy() > b->getEnergy(); });
+
+    int count = std::min(1, (int)sorted.size());
+    for (int i = 0; i < count; i++)
+    {
+        const auto &genome = sorted[i]->getGenome();
+        file << genome.nnWeights.size() << '\n';
+
+        for (float w : genome.nnWeights)
+            file << w << ' ';
+
+        file << '\n';
+    }
+    std::cout << "saved to file";
+}
+void Simulation::updateGenomeStats()
+{
+    genomeStats = {};
+
+    if (agents.empty())
+        return;
+
+    for (const auto &agent : agents)
+    {
+        Genome g = agent.getGenome();
+
+        genomeStats.avgSize += g.size;
+        genomeStats.avgPerception += g.perception;
+        genomeStats.avgMoveCooldown += g.moveCooldown;
+        genomeStats.avgFertility += g.fertility;
+    }
+
+    float n = static_cast<float>(agents.size());
+
+    genomeStats.avgSize /= n;
+    genomeStats.avgSize = std::round(genomeStats.avgSize * 100.0f) / 100.0f;
+    genomeStats.avgPerception /= n;
+    genomeStats.avgPerception = std::round(genomeStats.avgPerception * 100.0f) / 100.0f;
+    genomeStats.avgMoveCooldown /= n;
+    genomeStats.avgMoveCooldown = std::round(genomeStats.avgMoveCooldown * 100.0f) / 100.0f;
+    genomeStats.avgFertility /= n;
+    genomeStats.avgFertility = std::round(genomeStats.avgFertility * 100.0f) / 100.0f;
+}
 void Simulation::tick()
 {
     currentTick++;
     std::vector<Agent> newborns;
+    if (agents.size() == 0)
+    {
+        agents.reserve(numAgents);
+
+        for (int i = 0; i < numAgents; i++)
+        {
+            agents.emplace_back(env.getHeight(), env.getWidth(), weightsFile);
+        }
+    }
 
     for (int i = 0; i < agents.size(); i++)
     {
@@ -27,15 +94,13 @@ void Simulation::tick()
                 agents[i].getY() == agents[j].getY() &&
                 agents[i].isReadyToMate() && agents[j].isReadyToMate())
             {
-                std::cout << "agents are on the same cell ";
-
                 agents[i].mate();
                 agents[j].mate();
                 Genome childGenome = ga.crossOver(agents[i].getGenome(), agents[j].getGenome());
-                ga.mutate(childGenome);
-                // ga.mutate(childGenome);
+                ga.mutate(childGenome, weightsFile);
                 Agent newborn(childGenome, agents[i].getX(), agents[i].getY(), env.getHeight(), env.getWidth());
                 newborns.emplace_back(newborn);
+                env.getStats().births++;
                 break;
             }
         }
@@ -50,16 +115,19 @@ void Simulation::tick()
             if (i == j)
                 continue;
 
-            int distance = abs(agents[i].getX() - agents[j].getX()) + abs(agents[i].getY() - agents[j].getY());
-
-            if (distance < nearestAgent && distance <= agents[i].getPerception())
+            int distance = std::max(abs(agents[i].getX() - agents[j].getX()), abs(agents[i].getY() - agents[j].getY()));
+            if (distance <= agents[i].getPerception())
             {
-                nearestAgent = distance;
-                mateX = agents[j].getX();
-                mateY = agents[j].getY();
+                if (distance < nearestAgent)
+                {
+                    nearestAgent = distance;
+                    mateX = agents[j].getX();
+                    mateY = agents[j].getY();
+                }
             }
         }
-        agents[i].update(env, mateX, mateY);
+
+        agents[i].update(env, mateX, mateY, nearestAgent);
     }
     for (auto &child : newborns)
         agents.emplace_back(child);
@@ -71,19 +139,64 @@ void Simulation::tick()
                        { return a.getState() == AgentState::Dead; }),
         agents.end());
 
-    // clean up agents
-
     float avgEnergy = 0;
     for (auto &agent : agents)
+
     {
-        avgEnergy += agent.energy;
+        avgEnergy += agent.getEnergy();
     }
     avgEnergy = avgEnergy / agents.size();
+    updateGenomeStats();
+    float totalEnergy = 0.0f;
+    float totalAge = 0.0f;
+    int aliveAgents = 0;
 
-    std::cout << "Tick: " << currentTick
-              << "| Agents: " << agents.size()
-              << "| Agents average energy " << avgEnergy
-              << std::endl;
+    for (const auto &agent : agents)
+    {
+        if (agent.getState() == AgentState::Alive)
+        {
+            totalAge += agent.getAge();
+            totalEnergy += agent.getEnergy();
+            aliveAgents++;
+        }
+    }
+
+    if (aliveAgents > 0)
+    {
+        env.getStats().averageAge = totalAge / aliveAgents;
+        env.getStats().averageEnergy = totalEnergy / aliveAgents;
+    }
+
+    else
+    {
+        env.getStats().averageAge = 0;
+        env.getStats().averageEnergy = 0;
+    }
+    // logging
+    if (currentTick % 100 == 0)
+    {
+        logger.log(
+            currentTick,
+            agents.size(),
+            env.getStats().averageEnergy,
+            env.getStats().averageAge,
+            genomeStats.avgSize,
+            genomeStats.avgPerception,
+            genomeStats.avgMoveCooldown,
+            genomeStats.avgFertility);
+    }
+}
+void Simulation ::logFinalStats()
+{
+    finalLog.log(
+        currentTick,
+        agents.size(),
+        env.getStats().averageEnergy,
+        env.getStats().averageAge,
+        genomeStats.avgSize,
+        genomeStats.avgPerception,
+        genomeStats.avgMoveCooldown,
+        genomeStats.avgFertility);
 }
 const Environment &Simulation::getEnv() const
 {

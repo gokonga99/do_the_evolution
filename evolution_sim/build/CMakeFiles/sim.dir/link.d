@@ -5,6 +5,8 @@ sim: \
   CMakeFiles/sim.dir/src/Agent.cpp.o \
   CMakeFiles/sim.dir/src/Environment.cpp.o \
   CMakeFiles/sim.dir/src/GeneticAlgorithm.cpp.o \
+  CMakeFiles/sim.dir/src/Logger.cpp.o \
+  CMakeFiles/sim.dir/src/NeuralNetwork.cpp.o \
   CMakeFiles/sim.dir/src/Renderer.cpp.o \
   CMakeFiles/sim.dir/src/Simulation.cpp.o \
   CMakeFiles/sim.dir/src/main.cpp.o \
@@ -39,7 +41,6 @@ sim: \
   /usr/lib/gcc/x86_64-linux-gnu/14/../../../x86_64-linux-gnu/crtn.o \
   /lib/x86_64-linux-gnu/libstb.so.0 \
   /lib/x86_64-linux-gnu/libfreetype.so.6 \
-  /lib/x86_64-linux-gnu/libm.so.6 \
   /lib/x86_64-linux-gnu/libX11.so.6 \
   /lib/x86_64-linux-gnu/libXrandr.so.2 \
   /lib/x86_64-linux-gnu/libXcursor.so.1 \
@@ -69,6 +70,10 @@ CMakeFiles/sim.dir/src/Agent.cpp.o:
 CMakeFiles/sim.dir/src/Environment.cpp.o:
 
 CMakeFiles/sim.dir/src/GeneticAlgorithm.cpp.o:
+
+CMakeFiles/sim.dir/src/Logger.cpp.o:
+
+CMakeFiles/sim.dir/src/NeuralNetwork.cpp.o:
 
 CMakeFiles/sim.dir/src/Renderer.cpp.o:
 
@@ -137,8 +142,6 @@ CMakeFiles/sim.dir/src/main.cpp.o:
 /lib/x86_64-linux-gnu/libstb.so.0:
 
 /lib/x86_64-linux-gnu/libfreetype.so.6:
-
-/lib/x86_64-linux-gnu/libm.so.6:
 
 /lib/x86_64-linux-gnu/libX11.so.6:
 

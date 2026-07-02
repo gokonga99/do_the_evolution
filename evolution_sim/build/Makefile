@@ -201,6 +201,54 @@ src/GeneticAlgorithm.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim.dir/build.make CMakeFiles/sim.dir/src/GeneticAlgorithm.cpp.s
 .PHONY : src/GeneticAlgorithm.cpp.s
 
+src/Logger.o: src/Logger.cpp.o
+.PHONY : src/Logger.o
+
+# target to build an object file
+src/Logger.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim.dir/build.make CMakeFiles/sim.dir/src/Logger.cpp.o
+.PHONY : src/Logger.cpp.o
+
+src/Logger.i: src/Logger.cpp.i
+.PHONY : src/Logger.i
+
+# target to preprocess a source file
+src/Logger.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim.dir/build.make CMakeFiles/sim.dir/src/Logger.cpp.i
+.PHONY : src/Logger.cpp.i
+
+src/Logger.s: src/Logger.cpp.s
+.PHONY : src/Logger.s
+
+# target to generate assembly for a file
+src/Logger.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim.dir/build.make CMakeFiles/sim.dir/src/Logger.cpp.s
+.PHONY : src/Logger.cpp.s
+
+src/NeuralNetwork.o: src/NeuralNetwork.cpp.o
+.PHONY : src/NeuralNetwork.o
+
+# target to build an object file
+src/NeuralNetwork.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim.dir/build.make CMakeFiles/sim.dir/src/NeuralNetwork.cpp.o
+.PHONY : src/NeuralNetwork.cpp.o
+
+src/NeuralNetwork.i: src/NeuralNetwork.cpp.i
+.PHONY : src/NeuralNetwork.i
+
+# target to preprocess a source file
+src/NeuralNetwork.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim.dir/build.make CMakeFiles/sim.dir/src/NeuralNetwork.cpp.i
+.PHONY : src/NeuralNetwork.cpp.i
+
+src/NeuralNetwork.s: src/NeuralNetwork.cpp.s
+.PHONY : src/NeuralNetwork.s
+
+# target to generate assembly for a file
+src/NeuralNetwork.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sim.dir/build.make CMakeFiles/sim.dir/src/NeuralNetwork.cpp.s
+.PHONY : src/NeuralNetwork.cpp.s
+
 src/Renderer.o: src/Renderer.cpp.o
 .PHONY : src/Renderer.o
 
@@ -291,6 +339,12 @@ help:
 	@echo "... src/GeneticAlgorithm.o"
 	@echo "... src/GeneticAlgorithm.i"
 	@echo "... src/GeneticAlgorithm.s"
+	@echo "... src/Logger.o"
+	@echo "... src/Logger.i"
+	@echo "... src/Logger.s"
+	@echo "... src/NeuralNetwork.o"
+	@echo "... src/NeuralNetwork.i"
+	@echo "... src/NeuralNetwork.s"
 	@echo "... src/Renderer.o"
 	@echo "... src/Renderer.i"
 	@echo "... src/Renderer.s"

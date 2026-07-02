@@ -4,25 +4,29 @@
 #include <cstdlib>
 #include <ctime>
 #include <thread>
+#include <string>
 
-int main() {
-    //replace rand with
-    // std::mt19937
-    // std::uniform_int_distribution
+int main()
+{
     std::srand(static_cast<unsigned int>(std::time(0)));
 
-    int height=30;
-    int width=30;
-    float cellsize=25.f;
-    int numberOfAgents=20;
+    int height = 40;
+    int width = 60;
+    float cellsize = 25.f;
+    int numberOfAgents =100;
+    std::string weightsfile="elite_genomes.txt";
+    Simulation sim(numberOfAgents, height, width,weightsfile);
+    Renderer renderer(width, height, cellsize, sim);
 
-    Simulation sim(numberOfAgents,height,width);
-    Renderer renderer(width, height, cellsize);
-
-    while (renderer.isOpen()) {
+    while (renderer.isOpen())
+    {
         renderer.handleEvents();
-        sim.tick();
-        renderer.draw(sim);
-        std::this_thread::sleep_for(std::chrono::milliseconds(10));
+        if (!renderer.isPaused())
+        {
+            sim.tick();
+        }
+        renderer.draw();
+        std::this_thread::sleep_for(std::chrono::milliseconds(renderer.getSimSpeed()));
     }
+    sim.logFinalStats();
 }

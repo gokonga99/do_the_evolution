@@ -1,33 +1,61 @@
 #include "Agent.hpp"
-#include <climits>
 
-Agent::Agent(int height, int width)
+Agent::Agent(int height, int width, std::string &weightsFile)
 {
     age = 0;
     genome.size = 1 + rand() % 3;
     genome.perception = 1 + rand() % 2;
     genome.moveCooldown = 1 + rand() % 3;
-    maxAge = 250 + genome.moveCooldown * 50;
-    matingCooldown = 41;
+    genome.fertility = 1 + rand() % 3;
+    maxAge = 300 + genome.moveCooldown * 100;
+    matingCooldown = 40;
+    maxEnergy = 120.0f * genome.size;
+    energy = maxEnergy;
 
+    genome.hasNN = (rand() % 1 == 0);
+    if (genome.hasNN)
+    {
+        std::ifstream file(weightsFile);
+
+        if (!file.is_open())
+        {
+            std::cout << "FAILED TO OPEN: " << weightsFile << std::endl;
+        }
+        size_t weightCount;
+        file >> weightCount;
+
+        genome.nnWeights.resize(weightCount);
+
+        for (size_t j = 0; j < weightCount; j++)
+            file >> genome.nnWeights[j];
+
+        std::cout << "Loaded weight count: "
+                  << weightCount
+                  << std::endl;
+        // genome.nnWeights.resize(NeuralNetwork::TOTAL_WEIGHTS);
+        // for (auto &w : genome.nnWeights)
+        // {
+        //     w += ((rand() % 200) - 100) / 100.0f;
+        //     w = std::max(-1.0f, std::min(1.0f, w));
+        // }
+    }
     state = AgentState::Alive;
     dyingTimer = 0;
     x = rand() % width;
     y = rand() % height;
-    maxEnergy = 120 * genome.size;
-    energy = maxEnergy;
     readyToMate = false;
 }
 Agent::Agent(Genome &genome, int parentX, int parentY, int height, int width)
 {
     age = 0;
     this->genome = genome;
-    maxAge = 200 + genome.moveCooldown * 200;
+    maxAge = 300 + genome.moveCooldown * 50;
     x = parentX;
     y = parentY;
-    matingCooldown = 41;
-    maxEnergy = 120 * genome.size;
-    energy = 50;
+    matingCooldown = 30 * genome.fertility;
+    maxEnergy = 120.0f * genome.size;
+    energy = 60.0f;
+
     state = AgentState::Alive;
     dyingTimer = 0;
     readyToMate = false;
@@ -61,57 +89,87 @@ bool Agent::isReadyToMate()
 {
     return readyToMate;
 }
-
-void Agent::ableToMate()
+int Agent::getAge() const
 {
-    if (energy > maxEnergy / 2 && matingCooldown == 0)
-    {
-        readyToMate = true;
-        std::cout << "agent flagged as ready enegy=" << energy << "\n";
-    }
+    return age;
 }
+
 void Agent::mate()
 {
 
-    matingCooldown = 61;
-    energy -= 25;
+    matingCooldown = 30;
+    energy -= 30.0f;
     readyToMate = false;
     if (energy < 0)
         energy = 0;
-    std::cout << "agent is born! \n";
 }
-
-void Agent::moveTo(int newX, int newY, Environment &env)
+void Agent ::eat(Environment &env)
 {
-    if (env.isValidPosition(newX, newY))
-    {
-        if (x < newX)
-            x++;
-        else if (x > newX)
-            x--;
-        if (y < newY)
-            y++;
-        else if (y > newY)
-            y--;
-        energy -= (float)genome.size;
-    }
-    if (env.hasFood(x, y))
+    if (env.getFoodType(x, y) == 1)
     {
         env.consumeFood(x, y);
-        energy += 15.0f + (float)genome.size*2.0f;
+        energy += 15.0f;
+        if (energy > maxEnergy)
+            energy = maxEnergy;
+    }
+    else if (env.getFoodType(x, y) == 2 && genome.size > 1)
+    {
+        env.consumeFood(x, y);
+        energy += 30.0f * (float)genome.size;
+
         if (energy > maxEnergy)
             energy = maxEnergy;
     }
 }
-void Agent::scan(Environment &env, bool &foodVisable, int &foodX, int &foodY)
+void Agent::moveTo(int newX, int newY, Environment &env)
 {
-    energy -= genome.perception - 1;
+    if (env.isValidPosition(newX, newY))
+    {
+
+        int tempX = x;
+        int tempY = y;
+        if (x < newX)
+            tempX++;
+        else if (x > newX)
+            tempX--;
+        if (y < newY)
+            tempY++;
+        else if (y > newY)
+            tempY--;
+        energy -= (float)genome.size;
+
+        if (env.isValidPosition(tempX, tempY))
+        {
+            x = tempX;
+            y = tempY;
+        }
+    }
+    eat(env);
+}
+void Agent ::randomWalk(Environment &env)
+{
+    int rdx = (rand() % 3) - 1;
+    int rdy = (rand() % 3) - 1;
+    if (env.isValidPosition(x + rdx, y + rdy))
+    {
+        x += rdx;
+        y += rdy;
+        if (rdx != 0 || rdy != 0)
+            energy -= (float)genome.size;
+        eat(env);
+    }
+}
+ScanResult Agent::scan(Environment &env)
+{
+    energy -= 0.5f * (float)genome.perception;
     int tempFoodX = x + genome.perception;
     int tempFoodY = y + genome.perception;
-    int distanceToFood = INT_MAX;
+    int tempRareFoodX = x + genome.perception;
+    int tempRareFoodY = y + genome.perception;
 
     int startX, endX, stepX;
     int startY, endY, stepY;
+    ScanResult result;
 
     if (rand() % 2)
     {
@@ -143,47 +201,58 @@ void Agent::scan(Environment &env, bool &foodVisable, int &foodX, int &foodY)
     {
         for (int j = startY; j != endY + stepY; j += stepY)
         {
-            if (env.hasFood(i, j))
+            if ((env.getFoodType(i, j) == 2 && genome.size > 1) ||
+                (env.getFoodType(i, j) == 1))
             {
-                int distance = abs(i - x) + abs(j - y);
-                if (distanceToFood > distance)
+                int distance = std::max(abs(i - x), abs(j - y));
+                int distanceRare = std::max(abs(i - x), abs(j - y));
+                result.localFoodCount++;
+                if (result.distanceToFood > distance)
                 {
                     tempFoodX = i;
                     tempFoodY = j;
-                    distanceToFood = distance;
-
-                    foodVisable = true;
+                    result.distanceToFood = distance;
+                    result.foodVisible = true;
+                }
+                // used only by NN
+                if (genome.size > 1 && env.getFoodType(i, j) == 2 && result.distanceToRareFood > distanceRare)
+                {
+                    tempRareFoodX = i;
+                    tempRareFoodY = j;
+                    result.distanceToRareFood = distance;
+                    result.rareFoodVisible = true;
                 }
             }
         }
     }
-    if (foodVisable == true)
+    if (result.foodVisible)
     {
-        foodX = tempFoodX;
-        foodY = tempFoodY;
+        result.foodX = tempFoodX;
+        result.foodY = tempFoodY;
     }
+    if (result.rareFoodVisible)
+    {
+        result.rareFoodX = tempRareFoodX;
+        result.rareFoodY = tempRareFoodY;
+    }
+    result.localFoodCount /= (float)((2 * genome.perception + 1) * (2 * genome.perception + 1) - 1);
+
+    return result;
 }
 
-void Agent::update(Environment &env, int mateX, int mateY)
+void Agent::update(Environment &env, int mateX, int mateY, int mateDistance)
 {
-
-    energy -= 1.0f;
     age++;
-    bool mateVisable = (mateX != -1);
-
-    if (energy < maxEnergy / 2)
-        readyToMate = false;
-    else
-        ableToMate();
-
     if (state == AgentState::Dying)
     {
         dyingTimer++;
         if (dyingTimer >= 3)
+        {
             state = AgentState::Dead;
+            env.getStats().deaths++;
+        }
         return;
     }
-
     if (age > maxAge || energy <= 0)
     {
         state = AgentState::Dying;
@@ -191,46 +260,96 @@ void Agent::update(Environment &env, int mateX, int mateY)
     }
     if (age <= maxAge && energy > 0)
     {
+
+        energy -= 1.0f / (float)genome.moveCooldown;
+        bool mateVisable = (mateX != -1);
+
+        if (energy < maxEnergy / 2 || matingCooldown != 0)
+            readyToMate = false;
+        else if (energy >= maxEnergy / 2 && matingCooldown == 0)
+            readyToMate = true;
+
         if (matingCooldown > 0)
             matingCooldown--;
 
+        ScanResult result = scan(env);
+
         if (age % genome.moveCooldown == 0)
         {
-            bool foodVisable = false;
-            int foodX, foodY;
+            if (genome.hasNN && genome.nnWeights.size() == NeuralNetwork::TOTAL_WEIGHTS)
+            {
+                energy -= 0.5f;
+                nn.loadWeights(genome.nnWeights);
 
-            scan(env, foodVisable, foodX, foodY);
+                std::vector<float> inputs = {
+                    energy / maxEnergy,
+                    result.foodVisible ? 1.0f : 0.0f,
+                    result.foodVisible ? result.distanceToFood / (float)genome.perception : -1.0f,
+                    result.rareFoodVisible ? 1.0f : 0.0f,
+                    result.rareFoodVisible ? result.distanceToRareFood / (float)genome.perception : -1.0f,
+                    mateVisable ? 1.0f : 0.0f,
+                    mateVisable ? mateDistance / (float)genome.perception : -1.0f,
+                    readyToMate ? 1.0f : 0.0f,
+                    !env.isValidPosition(x, y + 1) ? 1.0f : 0.0f,
+                    !env.isValidPosition(x, y - 1) ? 1.0f : 0.0f,
+                    !env.isValidPosition(x - 1, y) ? 1.0f : 0.0f,
+                    !env.isValidPosition(x + 1, y) ? 1.0f : 0.0f,
+                    result.foodVisible ? result.localFoodCount : 0.0f,
+                };
+                int action = nn.compute(inputs);
+                env.getStats().totalDecisions++;
 
-            int distanceToFood = foodVisable
-                                     ? abs(x - foodX) + abs(y - foodY)
-                                     : INT_MAX;
+                switch (action)
+                {
+                case 0:
+                    if (result.foodVisible)
+                    {
+                        env.getStats().foodDecisions++;
+                        moveTo(result.foodX, result.foodY, env);
+                    }
+                    else
+                        env.getStats().foodImpossible++;
 
-            int distanceToMate = (mateVisable && readyToMate)
-                                     ? abs(x - mateX) + abs(y - mateY)
-                                     : INT_MAX;
+                    break;
+                case 1:
+                    if (result.rareFoodVisible)
+                    {
+                        env.getStats().rareFoodDecisions++;
+                        moveTo(result.rareFoodX, result.rareFoodY, env);
+                    }
+                    else
+                        env.getStats().rareImpossible++;
 
-            if (distanceToFood <= distanceToMate && foodVisable && energy <= maxEnergy * 0.8)
-                moveTo(foodX, foodY, env);
-            else if (mateVisable && readyToMate)
-                moveTo(mateX, mateY, env);
+                    break;
+                case 2:
+                    if (mateVisable && readyToMate)
+                    {
+                        env.getStats().mateDecisions++;
+                        moveTo(mateX, mateY, env);
+                    }
+                    else
+                        env.getStats().mateImpossible++;
+
+                    break;
+                case 3:
+                    env.getStats().wanderDecisions++;
+                    randomWalk(env);
+                    break;
+                case 4:
+                    env.getStats().stayDecisions++;
+                    eat(env);
+                    break;
+                }
+            }
             else
             {
-                int rdx = (rand() % 3) - 1;
-                int rdy = (rand() % 3) - 1;
-                if (env.isValidPosition(x + rdx, y + rdy))
+                if (result.foodVisible)
+                    moveTo(result.foodX, result.foodY, env);
+                else if (mateVisable && readyToMate)
+                    moveTo(mateX, mateY, env);
+                else
                 {
-                    x += rdx;
-                    y += rdy;
-                    if (rdx != 0 || rdy != 0)
-                        energy -= (float)genome.size;
-
-                    if (env.hasFood(x, y))
-                    {
-                        env.consumeFood(x, y);
-                        energy += 15.0f + (float)genome.size;
-                        if (energy > maxEnergy)
-                            energy = maxEnergy;
-                    }
+                    randomWalk(env);
                 }
             }
         }
