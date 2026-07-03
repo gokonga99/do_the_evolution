@@ -1189,7 +1189,9 @@ CMakeFiles/sim.dir/src/Renderer.cpp.o: /home/gokonga/C++_projects/bachalor_thesi
   /usr/include/c++/14/backward/binders.h \
   /usr/include/c++/14/bit \
   /usr/include/c++/14/bits/algorithmfwd.h \
+  /usr/include/c++/14/bits/align.h \
   /usr/include/c++/14/bits/alloc_traits.h \
+  /usr/include/c++/14/bits/allocated_ptr.h \
   /usr/include/c++/14/bits/allocator.h \
   /usr/include/c++/14/bits/basic_ios.h \
   /usr/include/c++/14/bits/basic_ios.tcc \
@@ -1197,6 +1199,7 @@ CMakeFiles/sim.dir/src/Renderer.cpp.o: /home/gokonga/C++_projects/bachalor_thesi
   /usr/include/c++/14/bits/basic_string.tcc \
   /usr/include/c++/14/bits/char_traits.h \
   /usr/include/c++/14/bits/charconv.h \
+  /usr/include/c++/14/bits/chrono.h \
   /usr/include/c++/14/bits/codecvt.h \
   /usr/include/c++/14/bits/concept_check.h \
   /usr/include/c++/14/bits/cpp_type_traits.h \
@@ -1206,6 +1209,10 @@ CMakeFiles/sim.dir/src/Renderer.cpp.o: /home/gokonga/C++_projects/bachalor_thesi
   /usr/include/c++/14/bits/exception.h \
   /usr/include/c++/14/bits/exception_defines.h \
   /usr/include/c++/14/bits/exception_ptr.h \
+  /usr/include/c++/14/bits/fs_dir.h \
+  /usr/include/c++/14/bits/fs_fwd.h \
+  /usr/include/c++/14/bits/fs_ops.h \
+  /usr/include/c++/14/bits/fs_path.h \
   /usr/include/c++/14/bits/fstream.tcc \
   /usr/include/c++/14/bits/functexcept.h \
   /usr/include/c++/14/bits/functional_hash.h \
@@ -1231,9 +1238,11 @@ CMakeFiles/sim.dir/src/Renderer.cpp.o: /home/gokonga/C++_projects/bachalor_thesi
   /usr/include/c++/14/bits/node_handle.h \
   /usr/include/c++/14/bits/ostream.tcc \
   /usr/include/c++/14/bits/ostream_insert.h \
+  /usr/include/c++/14/bits/parse_numbers.h \
   /usr/include/c++/14/bits/postypes.h \
   /usr/include/c++/14/bits/predefined_ops.h \
   /usr/include/c++/14/bits/ptr_traits.h \
+  /usr/include/c++/14/bits/quoted_string.h \
   /usr/include/c++/14/bits/random.h \
   /usr/include/c++/14/bits/random.tcc \
   /usr/include/c++/14/bits/range_access.h \
@@ -1244,7 +1253,10 @@ CMakeFiles/sim.dir/src/Renderer.cpp.o: /home/gokonga/C++_projects/bachalor_thesi
   /usr/include/c++/14/bits/ranges_util.h \
   /usr/include/c++/14/bits/refwrap.h \
   /usr/include/c++/14/bits/requires_hosted.h \
+  /usr/include/c++/14/bits/shared_ptr.h \
+  /usr/include/c++/14/bits/shared_ptr_base.h \
   /usr/include/c++/14/bits/specfun.h \
+  /usr/include/c++/14/bits/sstream.tcc \
   /usr/include/c++/14/bits/std_abs.h \
   /usr/include/c++/14/bits/stl_algo.h \
   /usr/include/c++/14/bits/stl_algobase.h \
@@ -1269,6 +1281,7 @@ CMakeFiles/sim.dir/src/Renderer.cpp.o: /home/gokonga/C++_projects/bachalor_thesi
   /usr/include/c++/14/bits/string_view.tcc \
   /usr/include/c++/14/bits/stringfwd.h \
   /usr/include/c++/14/bits/uniform_int_dist.h \
+  /usr/include/c++/14/bits/unique_ptr.h \
   /usr/include/c++/14/bits/uses_allocator.h \
   /usr/include/c++/14/bits/uses_allocator_args.h \
   /usr/include/c++/14/bits/utility.h \
@@ -1279,6 +1292,7 @@ CMakeFiles/sim.dir/src/Renderer.cpp.o: /home/gokonga/C++_projects/bachalor_thesi
   /usr/include/c++/14/climits \
   /usr/include/c++/14/clocale \
   /usr/include/c++/14/cmath \
+  /usr/include/c++/14/codecvt \
   /usr/include/c++/14/compare \
   /usr/include/c++/14/concepts \
   /usr/include/c++/14/cstddef \
@@ -1294,11 +1308,14 @@ CMakeFiles/sim.dir/src/Renderer.cpp.o: /home/gokonga/C++_projects/bachalor_thesi
   /usr/include/c++/14/ext/aligned_buffer.h \
   /usr/include/c++/14/ext/alloc_traits.h \
   /usr/include/c++/14/ext/atomicity.h \
+  /usr/include/c++/14/ext/concurrence.h \
   /usr/include/c++/14/ext/numeric_traits.h \
   /usr/include/c++/14/ext/string_conversions.h \
   /usr/include/c++/14/ext/type_traits.h \
+  /usr/include/c++/14/filesystem \
   /usr/include/c++/14/fstream \
   /usr/include/c++/14/initializer_list \
+  /usr/include/c++/14/iomanip \
   /usr/include/c++/14/ios \
   /usr/include/c++/14/iosfwd \
   /usr/include/c++/14/iostream \
@@ -1316,6 +1333,8 @@ CMakeFiles/sim.dir/src/Renderer.cpp.o: /home/gokonga/C++_projects/bachalor_thesi
   /usr/include/c++/14/pstl/glue_numeric_defs.h \
   /usr/include/c++/14/pstl/pstl_config.h \
   /usr/include/c++/14/random \
+  /usr/include/c++/14/ratio \
+  /usr/include/c++/14/sstream \
   /usr/include/c++/14/stdexcept \
   /usr/include/c++/14/streambuf \
   /usr/include/c++/14/string \
@@ -1489,7 +1508,9 @@ CMakeFiles/sim.dir/src/Simulation.cpp.o: /home/gokonga/C++_projects/bachalor_the
   /usr/include/c++/14/backward/binders.h \
   /usr/include/c++/14/bit \
   /usr/include/c++/14/bits/algorithmfwd.h \
+  /usr/include/c++/14/bits/align.h \
   /usr/include/c++/14/bits/alloc_traits.h \
+  /usr/include/c++/14/bits/allocated_ptr.h \
   /usr/include/c++/14/bits/allocator.h \
   /usr/include/c++/14/bits/basic_ios.h \
   /usr/include/c++/14/bits/basic_ios.tcc \
@@ -1497,6 +1518,7 @@ CMakeFiles/sim.dir/src/Simulation.cpp.o: /home/gokonga/C++_projects/bachalor_the
   /usr/include/c++/14/bits/basic_string.tcc \
   /usr/include/c++/14/bits/char_traits.h \
   /usr/include/c++/14/bits/charconv.h \
+  /usr/include/c++/14/bits/chrono.h \
   /usr/include/c++/14/bits/codecvt.h \
   /usr/include/c++/14/bits/concept_check.h \
   /usr/include/c++/14/bits/cpp_type_traits.h \
@@ -1505,6 +1527,10 @@ CMakeFiles/sim.dir/src/Simulation.cpp.o: /home/gokonga/C++_projects/bachalor_the
   /usr/include/c++/14/bits/exception.h \
   /usr/include/c++/14/bits/exception_defines.h \
   /usr/include/c++/14/bits/exception_ptr.h \
+  /usr/include/c++/14/bits/fs_dir.h \
+  /usr/include/c++/14/bits/fs_fwd.h \
+  /usr/include/c++/14/bits/fs_ops.h \
+  /usr/include/c++/14/bits/fs_path.h \
   /usr/include/c++/14/bits/fstream.tcc \
   /usr/include/c++/14/bits/functexcept.h \
   /usr/include/c++/14/bits/functional_hash.h \
@@ -1515,8 +1541,11 @@ CMakeFiles/sim.dir/src/Simulation.cpp.o: /home/gokonga/C++_projects/bachalor_the
   /usr/include/c++/14/bits/iterator_concepts.h \
   /usr/include/c++/14/bits/locale_classes.h \
   /usr/include/c++/14/bits/locale_classes.tcc \
+  /usr/include/c++/14/bits/locale_conv.h \
   /usr/include/c++/14/bits/locale_facets.h \
   /usr/include/c++/14/bits/locale_facets.tcc \
+  /usr/include/c++/14/bits/locale_facets_nonio.h \
+  /usr/include/c++/14/bits/locale_facets_nonio.tcc \
   /usr/include/c++/14/bits/localefwd.h \
   /usr/include/c++/14/bits/max_size_type.h \
   /usr/include/c++/14/bits/memory_resource.h \
@@ -1526,9 +1555,11 @@ CMakeFiles/sim.dir/src/Simulation.cpp.o: /home/gokonga/C++_projects/bachalor_the
   /usr/include/c++/14/bits/new_allocator.h \
   /usr/include/c++/14/bits/ostream.tcc \
   /usr/include/c++/14/bits/ostream_insert.h \
+  /usr/include/c++/14/bits/parse_numbers.h \
   /usr/include/c++/14/bits/postypes.h \
   /usr/include/c++/14/bits/predefined_ops.h \
   /usr/include/c++/14/bits/ptr_traits.h \
+  /usr/include/c++/14/bits/quoted_string.h \
   /usr/include/c++/14/bits/random.h \
   /usr/include/c++/14/bits/random.tcc \
   /usr/include/c++/14/bits/range_access.h \
@@ -1539,7 +1570,10 @@ CMakeFiles/sim.dir/src/Simulation.cpp.o: /home/gokonga/C++_projects/bachalor_the
   /usr/include/c++/14/bits/ranges_util.h \
   /usr/include/c++/14/bits/refwrap.h \
   /usr/include/c++/14/bits/requires_hosted.h \
+  /usr/include/c++/14/bits/shared_ptr.h \
+  /usr/include/c++/14/bits/shared_ptr_base.h \
   /usr/include/c++/14/bits/specfun.h \
+  /usr/include/c++/14/bits/sstream.tcc \
   /usr/include/c++/14/bits/std_abs.h \
   /usr/include/c++/14/bits/stl_algo.h \
   /usr/include/c++/14/bits/stl_algobase.h \
@@ -1560,6 +1594,7 @@ CMakeFiles/sim.dir/src/Simulation.cpp.o: /home/gokonga/C++_projects/bachalor_the
   /usr/include/c++/14/bits/string_view.tcc \
   /usr/include/c++/14/bits/stringfwd.h \
   /usr/include/c++/14/bits/uniform_int_dist.h \
+  /usr/include/c++/14/bits/unique_ptr.h \
   /usr/include/c++/14/bits/uses_allocator.h \
   /usr/include/c++/14/bits/uses_allocator_args.h \
   /usr/include/c++/14/bits/utility.h \
@@ -1570,29 +1605,36 @@ CMakeFiles/sim.dir/src/Simulation.cpp.o: /home/gokonga/C++_projects/bachalor_the
   /usr/include/c++/14/climits \
   /usr/include/c++/14/clocale \
   /usr/include/c++/14/cmath \
+  /usr/include/c++/14/codecvt \
   /usr/include/c++/14/compare \
   /usr/include/c++/14/concepts \
   /usr/include/c++/14/cstddef \
   /usr/include/c++/14/cstdint \
   /usr/include/c++/14/cstdio \
   /usr/include/c++/14/cstdlib \
+  /usr/include/c++/14/ctime \
   /usr/include/c++/14/cwchar \
   /usr/include/c++/14/cwctype \
   /usr/include/c++/14/debug/assertions.h \
   /usr/include/c++/14/debug/debug.h \
   /usr/include/c++/14/exception \
+  /usr/include/c++/14/ext/aligned_buffer.h \
   /usr/include/c++/14/ext/alloc_traits.h \
   /usr/include/c++/14/ext/atomicity.h \
+  /usr/include/c++/14/ext/concurrence.h \
   /usr/include/c++/14/ext/numeric_traits.h \
   /usr/include/c++/14/ext/string_conversions.h \
   /usr/include/c++/14/ext/type_traits.h \
+  /usr/include/c++/14/filesystem \
   /usr/include/c++/14/fstream \
   /usr/include/c++/14/initializer_list \
+  /usr/include/c++/14/iomanip \
   /usr/include/c++/14/ios \
   /usr/include/c++/14/iosfwd \
   /usr/include/c++/14/iostream \
   /usr/include/c++/14/istream \
   /usr/include/c++/14/limits \
+  /usr/include/c++/14/locale \
   /usr/include/c++/14/new \
   /usr/include/c++/14/numbers \
   /usr/include/c++/14/numeric \
@@ -1602,6 +1644,8 @@ CMakeFiles/sim.dir/src/Simulation.cpp.o: /home/gokonga/C++_projects/bachalor_the
   /usr/include/c++/14/pstl/glue_numeric_defs.h \
   /usr/include/c++/14/pstl/pstl_config.h \
   /usr/include/c++/14/random \
+  /usr/include/c++/14/ratio \
+  /usr/include/c++/14/sstream \
   /usr/include/c++/14/stdexcept \
   /usr/include/c++/14/streambuf \
   /usr/include/c++/14/string \
@@ -1628,6 +1672,7 @@ CMakeFiles/sim.dir/src/Simulation.cpp.o: /home/gokonga/C++_projects/bachalor_the
   /usr/include/errno.h \
   /usr/include/features-time64.h \
   /usr/include/features.h \
+  /usr/include/libintl.h \
   /usr/include/limits.h \
   /usr/include/linux/errno.h \
   /usr/include/linux/limits.h \
@@ -1739,8 +1784,10 @@ CMakeFiles/sim.dir/src/Simulation.cpp.o: /home/gokonga/C++_projects/bachalor_the
   /usr/include/x86_64-linux-gnu/c++/14/bits/error_constants.h \
   /usr/include/x86_64-linux-gnu/c++/14/bits/gthr-default.h \
   /usr/include/x86_64-linux-gnu/c++/14/bits/gthr.h \
+  /usr/include/x86_64-linux-gnu/c++/14/bits/messages_members.h \
   /usr/include/x86_64-linux-gnu/c++/14/bits/opt_random.h \
   /usr/include/x86_64-linux-gnu/c++/14/bits/os_defines.h \
+  /usr/include/x86_64-linux-gnu/c++/14/bits/time_members.h \
   /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
   /usr/include/x86_64-linux-gnu/gnu/stubs.h \
   /usr/include/x86_64-linux-gnu/sys/cdefs.h \
@@ -1850,7 +1897,9 @@ CMakeFiles/sim.dir/src/main.cpp.o: /home/gokonga/C++_projects/bachalor_thesis/ev
   /usr/include/c++/14/backward/binders.h \
   /usr/include/c++/14/bit \
   /usr/include/c++/14/bits/algorithmfwd.h \
+  /usr/include/c++/14/bits/align.h \
   /usr/include/c++/14/bits/alloc_traits.h \
+  /usr/include/c++/14/bits/allocated_ptr.h \
   /usr/include/c++/14/bits/allocator.h \
   /usr/include/c++/14/bits/atomic_base.h \
   /usr/include/c++/14/bits/atomic_lockfree_defines.h \
@@ -1872,6 +1921,10 @@ CMakeFiles/sim.dir/src/main.cpp.o: /home/gokonga/C++_projects/bachalor_thesis/ev
   /usr/include/c++/14/bits/exception.h \
   /usr/include/c++/14/bits/exception_defines.h \
   /usr/include/c++/14/bits/exception_ptr.h \
+  /usr/include/c++/14/bits/fs_dir.h \
+  /usr/include/c++/14/bits/fs_fwd.h \
+  /usr/include/c++/14/bits/fs_ops.h \
+  /usr/include/c++/14/bits/fs_path.h \
   /usr/include/c++/14/bits/fstream.tcc \
   /usr/include/c++/14/bits/functexcept.h \
   /usr/include/c++/14/bits/functional_hash.h \
@@ -1901,6 +1954,7 @@ CMakeFiles/sim.dir/src/main.cpp.o: /home/gokonga/C++_projects/bachalor_thesis/ev
   /usr/include/c++/14/bits/postypes.h \
   /usr/include/c++/14/bits/predefined_ops.h \
   /usr/include/c++/14/bits/ptr_traits.h \
+  /usr/include/c++/14/bits/quoted_string.h \
   /usr/include/c++/14/bits/random.h \
   /usr/include/c++/14/bits/random.tcc \
   /usr/include/c++/14/bits/range_access.h \
@@ -1912,7 +1966,10 @@ CMakeFiles/sim.dir/src/main.cpp.o: /home/gokonga/C++_projects/bachalor_thesis/ev
   /usr/include/c++/14/bits/refwrap.h \
   /usr/include/c++/14/bits/requires_hosted.h \
   /usr/include/c++/14/bits/semaphore_base.h \
+  /usr/include/c++/14/bits/shared_ptr.h \
+  /usr/include/c++/14/bits/shared_ptr_base.h \
   /usr/include/c++/14/bits/specfun.h \
+  /usr/include/c++/14/bits/sstream.tcc \
   /usr/include/c++/14/bits/std_abs.h \
   /usr/include/c++/14/bits/std_mutex.h \
   /usr/include/c++/14/bits/std_thread.h \
@@ -1951,6 +2008,7 @@ CMakeFiles/sim.dir/src/main.cpp.o: /home/gokonga/C++_projects/bachalor_thesis/ev
   /usr/include/c++/14/climits \
   /usr/include/c++/14/clocale \
   /usr/include/c++/14/cmath \
+  /usr/include/c++/14/codecvt \
   /usr/include/c++/14/compare \
   /usr/include/c++/14/concepts \
   /usr/include/c++/14/cstddef \
@@ -1966,11 +2024,14 @@ CMakeFiles/sim.dir/src/main.cpp.o: /home/gokonga/C++_projects/bachalor_thesis/ev
   /usr/include/c++/14/ext/aligned_buffer.h \
   /usr/include/c++/14/ext/alloc_traits.h \
   /usr/include/c++/14/ext/atomicity.h \
+  /usr/include/c++/14/ext/concurrence.h \
   /usr/include/c++/14/ext/numeric_traits.h \
   /usr/include/c++/14/ext/string_conversions.h \
   /usr/include/c++/14/ext/type_traits.h \
+  /usr/include/c++/14/filesystem \
   /usr/include/c++/14/fstream \
   /usr/include/c++/14/initializer_list \
+  /usr/include/c++/14/iomanip \
   /usr/include/c++/14/ios \
   /usr/include/c++/14/iosfwd \
   /usr/include/c++/14/iostream \
@@ -1990,6 +2051,7 @@ CMakeFiles/sim.dir/src/main.cpp.o: /home/gokonga/C++_projects/bachalor_thesis/ev
   /usr/include/c++/14/random \
   /usr/include/c++/14/ratio \
   /usr/include/c++/14/semaphore \
+  /usr/include/c++/14/sstream \
   /usr/include/c++/14/stdexcept \
   /usr/include/c++/14/stop_token \
   /usr/include/c++/14/streambuf \
@@ -2239,8 +2301,6 @@ CMakeFiles/sim.dir/src/Agent.cpp.o:
 
 /lib/x86_64-linux-gnu/libfreetype.so.6:
 
-/lib/x86_64-linux-gnu/libcap.so.2:
-
 /lib/x86_64-linux-gnu/libc.so.6:
 
 /lib/x86_64-linux-gnu/libbrotlicommon.so.1:
@@ -2293,6 +2353,10 @@ CMakeFiles/sim.dir/src/Agent.cpp.o:
 
 /usr/include/c++/14/map:
 
+/usr/include/c++/14/ext/concurrence.h:
+
+/usr/include/c++/14/codecvt:
+
 /usr/include/c++/14/bits/stream_iterator.h:
 
 /usr/include/c++/14/bits/stl_tree.h:
@@ -2301,7 +2365,21 @@ CMakeFiles/sim.dir/src/Agent.cpp.o:
 
 /usr/include/c++/14/bits/stl_map.h:
 
+/usr/include/c++/14/bits/sstream.tcc:
+
+/usr/include/c++/14/bits/shared_ptr.h:
+
+/usr/include/c++/14/bits/quoted_string.h:
+
 /usr/include/c++/14/bits/locale_conv.h:
+
+/lib/x86_64-linux-gnu/libcap.so.2:
+
+/usr/include/c++/14/bits/fs_path.h:
+
+/usr/include/c++/14/bits/fs_ops.h:
+
+/usr/include/c++/14/bits/fs_fwd.h:
 
 /usr/include/c++/14/bits/erase_if.h:
 
@@ -2377,9 +2455,9 @@ CMakeFiles/sim.dir/src/Environment.cpp.o:
 
 /usr/include/SFML/Graphics/RenderStates.hpp:
 
-/usr/include/c++/14/bits/unique_ptr.h:
-
 /usr/include/c++/14/iterator:
+
+/usr/include/c++/14/bits/unique_ptr.h:
 
 /usr/include/SFML/Graphics/Rect.inl:
 
@@ -2444,6 +2522,8 @@ CMakeFiles/sim.dir/src/Environment.cpp.o:
 /usr/include/SFML/System/Time.hpp:
 
 /home/gokonga/C++_projects/bachalor_thesis/evolution_sim/src/Environment.cpp:
+
+/usr/include/c++/14/bits/shared_ptr_base.h:
 
 /usr/include/c++/14/tr1/beta_function.tcc:
 
@@ -2522,6 +2602,8 @@ CMakeFiles/sim.dir/src/Environment.cpp.o:
 /usr/include/c++/14/compare:
 
 /usr/include/x86_64-linux-gnu/bits/types/clock_t.h:
+
+/usr/include/c++/14/sstream:
 
 /usr/include/c++/14/bits/stl_algo.h:
 
@@ -2607,11 +2689,15 @@ CMakeFiles/sim.dir/src/Environment.cpp.o:
 
 /usr/include/c++/14/concepts:
 
+/usr/include/c++/14/bits/fs_dir.h:
+
 /usr/include/c++/14/bits/exception.h:
 
 /usr/include/c++/14/cctype:
 
 /usr/include/c++/14/ext/atomicity.h:
+
+/usr/include/c++/14/iomanip:
 
 /usr/include/c++/14/limits:
 
@@ -2819,6 +2905,8 @@ CMakeFiles/sim.dir/src/Environment.cpp.o:
 
 /usr/include/c++/14/ext/aligned_buffer.h:
 
+/usr/include/c++/14/bits/align.h:
+
 /usr/include/c++/14/bits/concept_check.h:
 
 /usr/include/c++/14/bits/ostream.tcc:
@@ -2925,6 +3013,8 @@ CMakeFiles/sim.dir/src/Environment.cpp.o:
 
 /usr/include/math.h:
 
+/usr/include/c++/14/filesystem:
+
 /usr/include/wctype.h:
 
 /usr/include/sched.h:
@@ -2978,6 +3068,8 @@ CMakeFiles/sim.dir/src/Simulation.cpp.o:
 /usr/include/c++/14/bits/std_thread.h:
 
 /usr/include/x86_64-linux-gnu/c++/14/bits/c++locale.h:
+
+/usr/include/c++/14/bits/allocated_ptr.h:
 
 /usr/include/x86_64-linux-gnu/bits/mathcalls-narrow.h:
 

@@ -12,7 +12,7 @@ Agent::Agent(int height, int width, std::string &weightsFile)
     maxEnergy = 120.0f * genome.size;
     energy = maxEnergy;
 
-    genome.hasNN = (rand() % 1 == 0);
+    genome.hasNN = (rand() % 2 == 0);
     if (genome.hasNN)
     {
         std::ifstream file(weightsFile);
@@ -45,6 +45,7 @@ Agent::Agent(int height, int width, std::string &weightsFile)
     y = rand() % height;
     readyToMate = false;
 }
+
 Agent::Agent(Genome &genome, int parentX, int parentY, int height, int width)
 {
     age = 0;
@@ -52,7 +53,7 @@ Agent::Agent(Genome &genome, int parentX, int parentY, int height, int width)
     maxAge = 300 + genome.moveCooldown * 50;
     x = parentX;
     y = parentY;
-    matingCooldown = 30 * genome.fertility;
+    matingCooldown = 20 * genome.fertility;
     maxEnergy = 120.0f * genome.size;
     energy = 60.0f;
 
@@ -290,14 +291,11 @@ void Agent::update(Environment &env, int mateX, int mateY, int mateDistance)
                     mateVisable ? 1.0f : 0.0f,
                     mateVisable ? mateDistance / (float)genome.perception : -1.0f,
                     readyToMate ? 1.0f : 0.0f,
-                    !env.isValidPosition(x, y + 1) ? 1.0f : 0.0f,
-                    !env.isValidPosition(x, y - 1) ? 1.0f : 0.0f,
-                    !env.isValidPosition(x - 1, y) ? 1.0f : 0.0f,
-                    !env.isValidPosition(x + 1, y) ? 1.0f : 0.0f,
                     result.foodVisible ? result.localFoodCount : 0.0f,
                 };
                 int action = nn.compute(inputs);
                 env.getStats().totalDecisions++;
+                int decision = 1;
 
                 switch (action)
                 {
@@ -308,8 +306,10 @@ void Agent::update(Environment &env, int mateX, int mateY, int mateDistance)
                         moveTo(result.foodX, result.foodY, env);
                     }
                     else
+                    {
                         env.getStats().foodImpossible++;
-
+                        
+                    }
                     break;
                 case 1:
                     if (result.rareFoodVisible)
@@ -318,8 +318,9 @@ void Agent::update(Environment &env, int mateX, int mateY, int mateDistance)
                         moveTo(result.rareFoodX, result.rareFoodY, env);
                     }
                     else
+                    {
                         env.getStats().rareImpossible++;
-
+                    }
                     break;
                 case 2:
                     if (mateVisable && readyToMate)
@@ -328,8 +329,10 @@ void Agent::update(Environment &env, int mateX, int mateY, int mateDistance)
                         moveTo(mateX, mateY, env);
                     }
                     else
+                    {
                         env.getStats().mateImpossible++;
-
+                        
+                    }
                     break;
                 case 3:
                     env.getStats().wanderDecisions++;

@@ -4,14 +4,6 @@
 #include <cmath>
 #include "Simulation.hpp"
 
-int getPercentage(int value, int total)
-{
-    if (total == 0)
-        return 0;
-
-    return (int)std::round((float)value / (float)total * 100.0f);
-}
-
 Renderer::Renderer(int w, int h, int cs, Simulation &sim)
     : width(w), height(h), cellsize(cs), sim(sim),
       window(sf::VideoMode(w * cs + 200, h * cs), "Evolution Sim")
@@ -20,6 +12,15 @@ Renderer::Renderer(int w, int h, int cs, Simulation &sim)
     statsText.setFont(font);
     statsText.setCharacterSize(14);
     statsText.setFillColor(sf::Color::White);
+}
+int Renderer ::getPercentage(int value, int total)
+{
+    if (total == 0)
+        return 0;
+    if (value == 0)
+        return 0;
+
+    return (int)std::round((float)value / (float)total * 100.0f);
 }
 
 bool Renderer::isOpen()
@@ -64,6 +65,9 @@ void Renderer::handleEvents()
 
 void Renderer::draw()
 {
+    if(sim.getCurrentTick()==19999)
+        paused=true;
+
     sf::RectangleShape border(sf::Vector2f(width * cellsize, height * cellsize));
     sf::RectangleShape cell(sf::Vector2f(cellsize - 1, cellsize - 1));
     sf::CircleShape circle((cellsize * 0.4f));
@@ -248,45 +252,30 @@ void Renderer::draw()
         "Thinker Decisions\n" +
         "Total: " + std::to_string(envStats.totalDecisions) + "\n" +
 
-        "Move to Food: " +
-        std::to_string(getPercentage(envStats.foodDecisions,
-                                     envStats.totalDecisions)) +
-        "%\n" +
+        "Move to Food: " + 
+            std::to_string(getPercentage(envStats.foodDecisions, envStats.totalDecisions)) + "%\n" +
 
-        "Move to RareFood: " +
-        std::to_string(getPercentage(envStats.rareFoodDecisions,
-                                     envStats.totalDecisions)) +
-        "%\n" +
+        "Move to RareFood: " + 
+            std::to_string(getPercentage(envStats.rareFoodDecisions, envStats.totalDecisions)) + "%\n" +
 
-        "Move to Mate: " +
-        std::to_string(getPercentage(envStats.mateDecisions,
-                                     envStats.totalDecisions)) +
-        "%\n" +
+        "Move to Mate: " + 
+        std::to_string(getPercentage(envStats.mateDecisions, envStats.totalDecisions)) + "%\n" +
 
-        "Wander randomly: " +
-        std::to_string(getPercentage(envStats.wanderDecisions,
-                                     envStats.totalDecisions)) +
-        "%\n" +
+        "Wander randomly: " + 
+            std::to_string(getPercentage(envStats.wanderDecisions, envStats.totalDecisions)) + "%\n" +
 
-        "Stay still: " +
-        std::to_string(getPercentage(envStats.stayDecisions,
-                                     envStats.totalDecisions)) +
-        "%\n" +
+        "Stay still: " + 
+            std::to_string(getPercentage(envStats.stayDecisions, envStats.totalDecisions)) + "%\n" +
 
-        "food impossible: " +
-        std::to_string(getPercentage(envStats.foodImpossible,
-                                     envStats.totalDecisions)) +
-        "%\n" +
+        "food impossible: " + 
+            std::to_string(getPercentage(envStats.foodImpossible, envStats.totalDecisions)) + "%\n" +
 
-        "rare food impossible: " +
-        std::to_string(getPercentage(envStats.rareImpossible,
-                                     envStats.totalDecisions)) +
-        "%\n" +
+        "rare food impossible: " + 
+            std::to_string(getPercentage(envStats.rareImpossible, envStats.totalDecisions)) + "%\n" +
 
-        "mate impossible: " +
-        std::to_string(getPercentage(envStats.mateImpossible,
-                                     envStats.totalDecisions)) +
-        "%\n\n" +
+        "mate impossible: " + 
+            std::to_string(getPercentage(envStats.mateImpossible, envStats.totalDecisions)) + "%\n\n" +
+
         "Speed: " + std::to_string(simSpeed) + "ms\n\n";
 
     statsText.setString(statistics);

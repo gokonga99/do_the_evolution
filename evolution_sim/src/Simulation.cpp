@@ -15,7 +15,15 @@ Simulation::Simulation(int numAgents, int height, int width, std::string &weight
         agents.emplace_back(height, width, weightsFile);
     }
 }
+int Simulation ::getPercentage(int value, int total)
+{
+    if (total == 0)
+        return 0;
+    if (value == 0)
+        return 0;
 
+    return (int)std::round((float)value / (float)total * 100.0f);
+}
 int Simulation::getCurrentTick() const
 {
     return currentTick;
@@ -76,15 +84,16 @@ void Simulation::tick()
 {
     currentTick++;
     std::vector<Agent> newborns;
-    if (agents.size() == 0)
-    {
-        agents.reserve(numAgents);
+    // helper code to generate somewhat competent thinkers for experiments
+    // if (agents.size() == 0)
+    // {
+    //     agents.reserve(numAgents);
 
-        for (int i = 0; i < numAgents; i++)
-        {
-            agents.emplace_back(env.getHeight(), env.getWidth(), weightsFile);
-        }
-    }
+    //     for (int i = 0; i < numAgents; i++)
+    //     {
+    //         agents.emplace_back(env.getHeight(), env.getWidth(), weightsFile);
+    //     }
+    // }
 
     for (int i = 0; i < agents.size(); i++)
     {
@@ -183,7 +192,15 @@ void Simulation::tick()
             genomeStats.avgSize,
             genomeStats.avgPerception,
             genomeStats.avgMoveCooldown,
-            genomeStats.avgFertility);
+            genomeStats.avgFertility,
+            env.getStats().foodDecisions,
+            env.getStats().rareFoodDecisions,
+            env.getStats().mateDecisions,
+            env.getStats().wanderDecisions,
+            env.getStats().stayDecisions,
+            env.getStats().foodImpossible,
+            env.getStats().rareImpossible,
+            env.getStats().mateImpossible);
     }
 }
 void Simulation ::logFinalStats()
@@ -196,7 +213,15 @@ void Simulation ::logFinalStats()
         genomeStats.avgSize,
         genomeStats.avgPerception,
         genomeStats.avgMoveCooldown,
-        genomeStats.avgFertility);
+        genomeStats.avgFertility,
+        env.getStats().foodDecisions,
+        env.getStats().rareFoodDecisions,
+        env.getStats().mateDecisions,
+        env.getStats().wanderDecisions,
+        env.getStats().stayDecisions,
+        env.getStats().foodImpossible,
+        env.getStats().rareImpossible,
+        env.getStats().mateImpossible);
 }
 const Environment &Simulation::getEnv() const
 {

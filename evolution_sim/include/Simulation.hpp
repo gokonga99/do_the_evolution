@@ -5,7 +5,7 @@
 #include "GeneticAlgorithm.hpp"
 #include "Logger.hpp"
 #include <string>
-
+#include <filesystem>
 
 struct GenomeStats
 {
@@ -27,7 +27,9 @@ public:
     void saveToFile(const std::string &fileName);
     void updateGenomeStats();
     void logFinalStats();
-    GenomeStats getGenomeStats(){
+    int getPercentage(int value, int total);
+    GenomeStats getGenomeStats()
+    {
         return genomeStats;
     }
 
@@ -39,6 +41,8 @@ private:
     std::string &weightsFile;
     GeneticAlgorithm ga;
     GenomeStats genomeStats;
-    Logger logger{"simulation.csv"};
-    Logger finalLog{"simulationFinalLog.csv"};
+
+
+    Logger logger{"test3_high_food_mixed.csv"};
+    Logger finalLog{"tes3_high_food_mixed_finalLog.csv"};
 };

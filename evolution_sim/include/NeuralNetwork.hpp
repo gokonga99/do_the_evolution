@@ -5,8 +5,8 @@
 class NeuralNetwork
 {
 public:
-    static const int INPUT_SIZE = 13;
-    static const int HIDDEN_SIZE = 8;
+    static const int INPUT_SIZE = 9;
+    static const int HIDDEN_SIZE = 6;
     static const int OUTPUT_SIZE = 5;
     static const int TOTAL_WEIGHTS = INPUT_SIZE * HIDDEN_SIZE + HIDDEN_SIZE * OUTPUT_SIZE;
 

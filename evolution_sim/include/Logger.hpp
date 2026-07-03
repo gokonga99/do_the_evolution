@@ -5,7 +5,7 @@
 class Logger
 {
 public:
-    Logger(const std::string& filename);
+    Logger(const std::string &filename);
 
     void log(
         int tick,
@@ -15,7 +15,15 @@ public:
         float avgSize,
         float avgPerception,
         float avgCooldown,
-        float avgFertility);
+        float avgFertility,
+        int foodDecisions,
+        int rareFoodDecisions,
+        int mateDecisions,
+        int wanderDecisions,
+        int stayDecisions,
+        int foodImpossible,
+        int rareImpossible,
+        int mateImpossible);
 
 private:
     std::ofstream file;

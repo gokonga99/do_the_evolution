@@ -48,9 +48,9 @@ public:
     void randomWalk(Environment &env);
     void move(int dx, int dy, Environment &env);
     float getEnergy() const
-{
-    return energy;
-}
+    {
+        return energy;
+    }
 
 private:
     int x, y;
@@ -65,5 +65,4 @@ private:
     bool readyToMate;
     float energy;
     AgentState state;
-
 };

@@ -15,7 +15,7 @@ public:
     bool isPaused();
     sf::Font font;
     sf::Text statsText;
-
+    int getPercentage(int value, int total);
 private:
     sf::RenderWindow window;
     int width;
