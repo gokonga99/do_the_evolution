@@ -13,13 +13,15 @@ struct GenomeStats
     float avgPerception = 0;
     float avgMoveCooldown = 0;
     float avgFertility = 0;
+    float avgEnergy = 0;
+    int wandererCount = 0;
+    int thinkerCount = 0;
 };
 
 class Simulation
 {
 public:
     Simulation(int numAgents, int height, int width, std::string &weightsFile);
-    // void run(int maxTicks);
     void tick();
     const Environment &getEnv() const;
     const std::vector<Agent> &getAgents() const;
@@ -41,7 +43,6 @@ private:
     std::string &weightsFile;
     GeneticAlgorithm ga;
     GenomeStats genomeStats;
-
 
     Logger logger{"test3_high_food_mixed.csv"};
     Logger finalLog{"tes3_high_food_mixed_finalLog.csv"};

@@ -65,7 +65,7 @@ void Renderer::handleEvents()
 
 void Renderer::draw()
 {
-    if(sim.getCurrentTick()==19999)
+    if(sim.getCurrentTick()==20000)
         paused=true;
 
     sf::RectangleShape border(sf::Vector2f(width * cellsize, height * cellsize));

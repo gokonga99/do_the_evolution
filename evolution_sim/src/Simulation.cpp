@@ -63,6 +63,13 @@ void Simulation::updateGenomeStats()
     {
         Genome g = agent.getGenome();
 
+        genomeStats.avgEnergy += agent.getEnergy();
+        if (agent.getGenome().hasNN)
+            genomeStats.thinkerCount++;
+        else if (!agent.getGenome().hasNN)
+            genomeStats.wandererCount++;
+
+        genomeStats.avgEnergy = genomeStats.avgEnergy / agents.size();
         genomeStats.avgSize += g.size;
         genomeStats.avgPerception += g.perception;
         genomeStats.avgMoveCooldown += g.moveCooldown;
@@ -84,16 +91,6 @@ void Simulation::tick()
 {
     currentTick++;
     std::vector<Agent> newborns;
-    // helper code to generate somewhat competent thinkers for experiments
-    // if (agents.size() == 0)
-    // {
-    //     agents.reserve(numAgents);
-
-    //     for (int i = 0; i < numAgents; i++)
-    //     {
-    //         agents.emplace_back(env.getHeight(), env.getWidth(), weightsFile);
-    //     }
-    // }
 
     for (int i = 0; i < agents.size(); i++)
     {
@@ -128,11 +125,12 @@ void Simulation::tick()
             if (distance <= agents[i].getPerception())
             {
                 if (distance < nearestAgent)
-                {
-                    nearestAgent = distance;
-                    mateX = agents[j].getX();
-                    mateY = agents[j].getY();
-                }
+                    for (auto &agent : agents)
+                    {
+                        nearestAgent = distance;
+                        mateX = agents[j].getX();
+                        mateY = agents[j].getY();
+                    }
             }
         }
 
@@ -143,18 +141,22 @@ void Simulation::tick()
 
     env.update();
 
+    for (auto &agent : agents)
+    {
+        if (agent.getState() == AgentState::Dead)
+        {
+            if (agent.getGenome().hasNN)
+                genomeStats.thinkerCount--;
+            else if (agent.getGenome().hasNN)
+                genomeStats.wandererCount--;
+        }
+    }
+
     agents.erase(
         std::remove_if(agents.begin(), agents.end(), [](const Agent &a)
                        { return a.getState() == AgentState::Dead; }),
         agents.end());
 
-    float avgEnergy = 0;
-    for (auto &agent : agents)
-
-    {
-        avgEnergy += agent.getEnergy();
-    }
-    avgEnergy = avgEnergy / agents.size();
     updateGenomeStats();
     float totalEnergy = 0.0f;
     float totalAge = 0.0f;
@@ -187,6 +189,8 @@ void Simulation::tick()
         logger.log(
             currentTick,
             agents.size(),
+            genomeStats.wandererCount,
+            genomeStats.thinkerCount,
             env.getStats().averageEnergy,
             env.getStats().averageAge,
             genomeStats.avgSize,
@@ -208,6 +212,8 @@ void Simulation ::logFinalStats()
     finalLog.log(
         currentTick,
         agents.size(),
+        genomeStats.wandererCount,
+        genomeStats.thinkerCount,
         env.getStats().averageEnergy,
         env.getStats().averageAge,
         genomeStats.avgSize,

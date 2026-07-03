@@ -7,6 +7,8 @@ Logger::Logger(const std::string &filename)
     file
         << "Tick,"
         << "Population,"
+        <<"wandererCount,"
+        <<"thinkerCount,"
         << "AverageEnergy,"
         << "AverageAge,"
         << "AverageSize,"
@@ -26,6 +28,8 @@ Logger::Logger(const std::string &filename)
 void Logger::log(
     int tick,
     int population,
+    int wandererCount,
+    int thinkerCount,
     float avgEnergy,
     float avgAge,
     float avgSize,
@@ -44,6 +48,8 @@ void Logger::log(
     file
         << tick << ","
         << population << ","
+        << wandererCount <<","
+        << thinkerCount <<","
         << avgEnergy << ","
         << avgAge << ","
         << avgSize << ","

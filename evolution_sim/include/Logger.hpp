@@ -10,6 +10,8 @@ public:
     void log(
         int tick,
         int population,
+        int wandererCount,
+        int thinkerCount,
         float avgEnergy,
         float avgAge,
         float avgSize,

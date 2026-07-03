@@ -1,0 +1,2 @@
+Tick,Population,wandererCount,thinkerCount,AverageEnergy,AverageAge,AverageSize,AveragePerception,AverageCooldown,AverageFertility,foodDecisions,rareFoodDecisions, mateDecisions,wanderDecisions,stayDecisions,foodImpossible,rareImpossible,mateImpossible 
+20000,57,57,0,140.152,175.946,2.09,1.98,1.14,2.32,4721,0,562,2096,521,73,1131,4525
