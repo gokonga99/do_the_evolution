@@ -12,7 +12,8 @@ Agent::Agent(int height, int width, std::string &weightsFile)
     maxEnergy = 120.0f * genome.size;
     energy = maxEnergy;
 
-    genome.hasNN = (rand() % 2 == 0);
+    // genome.hasNN = (rand() % 1 == 0);
+    genome.hasNN=false;
     if (genome.hasNN)
     {
         std::ifstream file(weightsFile);

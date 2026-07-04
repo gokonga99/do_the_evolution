@@ -44,6 +44,6 @@ private:
     GeneticAlgorithm ga;
     GenomeStats genomeStats;
 
-    Logger logger{"test3_high_food_mixed.csv"};
-    Logger finalLog{"tes3_high_food_mixed_finalLog.csv"};
+    Logger logger{"test_med_food_wanderers.csv"};
+    Logger finalLog{"tes_med_food_mixed_wanderers.csv"};
 };

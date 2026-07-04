@@ -41,29 +41,29 @@ void GeneticAlgorithm::mutate(Genome &genome, std::string &weightsFile)
     genome.perception = std::max(1, std::min(2, genome.perception));
     genome.fertility = std ::max(1, std::min(3, genome.fertility));
 
-    if (rand() % 100 < 1)
-    {
-        genome.hasNN = !genome.hasNN;
-        if (genome.hasNN)
-        {
-            std::ifstream file(weightsFile);
+    // if (rand() % 100 < 1)
+    // {
+    //     genome.hasNN = !genome.hasNN;
+    //     if (genome.hasNN)
+    //     {
+    //         std::ifstream file(weightsFile);
 
-            size_t weightCount;
-            file >> weightCount;
+    //         size_t weightCount;
+    //         file >> weightCount;
 
-            genome.nnWeights.resize(weightCount);
+    //         genome.nnWeights.resize(weightCount);
 
-            for (size_t j = 0; j < weightCount; j++)
-                file >> genome.nnWeights[j];
-        }
-    }
-    if (genome.hasNN)
-    {
-        for (auto &w : genome.nnWeights)
-        {
-            if (rand() % 100 < mutationRate)
-                w += ((rand() % 200) - 100) / 100.0f;
-            w = std::max(-1.0f, std::min(1.0f, w));
-        }
-    }
+    //         for (size_t j = 0; j < weightCount; j++)
+    //             file >> genome.nnWeights[j];
+    //     }
+    // }
+    // if (genome.hasNN)
+    // {
+    //     for (auto &w : genome.nnWeights)
+    //     {
+    //         if (rand() % 100 < mutationRate)
+    //             w += ((rand() % 200) - 100) / 100.0f;
+    //         w = std::max(-1.0f, std::min(1.0f, w));
+    //     }
+    // }
 }

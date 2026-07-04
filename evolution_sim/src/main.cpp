@@ -13,7 +13,7 @@ int main()
     int height = 40;
     int width = 60;
     float cellsize = 25.f;
-    int numberOfAgents =100;
+    int numberOfAgents =60;
     std::string weightsfile="elite_genomes.txt";
     Simulation sim(numberOfAgents, height, width,weightsfile);
     Renderer renderer(width, height, cellsize, sim);

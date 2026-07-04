@@ -1,0 +1,3 @@
+/home/gokonga/C++_projects/bachalor_thesis/evolution_sim/build/CMakeFiles/sim.dir
+/home/gokonga/C++_projects/bachalor_thesis/evolution_sim/build/CMakeFiles/edit_cache.dir
+/home/gokonga/C++_projects/bachalor_thesis/evolution_sim/build/CMakeFiles/rebuild_cache.dir

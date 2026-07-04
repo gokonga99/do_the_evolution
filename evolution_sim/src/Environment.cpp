@@ -113,7 +113,7 @@ void Environment::update()
 
     if (currentTick % 10 == 0)
     {
-        int foodToAdd = (width * height / 15);
+        int foodToAdd = (width * height / 20);
         int attempts = 0;
 
         while (foodToAdd > 0 && attempts < 1000)
